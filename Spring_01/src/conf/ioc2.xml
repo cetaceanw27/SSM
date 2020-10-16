@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-4.0.xsd"
+
+>
+
+<!--    <bean id="person01" class="com.guigu.bean.Person">-->
+<!--        <property name="lastName">-->
+<!--            <null/>-->
+<!--        </property>-->
+<!--        <property name="car" ref="car01"></property>-->
+<!--    </bean>-->
+
+    <bean id="person02" class="com.guigu.bean.Person">
+        <property name="lastName">
+            <null/>
+        </property>
+        <property name="car">
+            <bean id="carInner" class="com.guigu.bean.Car" ><!-- 内部 id 不能被获取到-->
+                <property name="carName" value="baoma"></property>
+                <property name="color" value="green"></property>
+                <property name="price" value="100"></property>
+            </bean>
+
+        </property>
+    </bean>
+
+    <bean id="car01" class="com.guigu.bean.Car" abstract="true">
+        <property name="carName" value="car1"></property>
+        <property name="color" value="red"></property>
+        <property name="price" value="300000"></property>
+    </bean>
+
+    <bean id="car02" class="com.guigu.bean.Car" parent="car01">
+        <property name="carName" value="car2"></property>
+    </bean>
+
+
+
+
+    <bean class="com.guigu.bean.Book" id="book0002">
+        <property name="bookName" value="dongyouji"></property>
+    </bean>
+
+    <bean class="com.guigu.bean.Person" id="person03">
+        <property name="books">
+            <list>
+                <bean id="book0001" class="com.guigu.bean.Book" p:bookName="xiyouji"></bean>
+                <ref bean="book0002"></ref>
+
+            </list>
+        </property>
+
+        <property name="maps">
+            <map>
+                <entry key="01" value="zhang3"></entry>
+                <entry key="02" value="18"></entry>
+                <entry key="03" value-ref="book0002"></entry>
+                <entry key="04">
+                    <bean class="com.guigu.bean.Car">
+                        <property name="carName" value="baoma"></property>
+                    </bean>
+                </entry>
+<!--                <entry key="05">-->
+<!--                    <map></map>-->
+<!--                </entry>-->
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">123123</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="com.guigu.bean.Person" id="person04">
+        <property name="maps" ref="mama"></property>
+    </bean>
+
+    <util:map id="mama">
+        <entry key="01" value="zhang3"></entry>
+        <entry key="02" value="18"></entry>
+        <entry key="03" value-ref="book0002"></entry>
+        <entry key="04">
+            <bean class="com.guigu.bean.Car">
+                <property name="carName" value="baoma"></property>
+            </bean>
+        </entry>
+    </util:map>
+
+<!--    级联属性：属性的属性，可以修改容器里的属性-->
+<!--    <bean class="com.guigu.bean.Person" id="person05">-->
+<!--        <property name="car" ref="car01"></property>-->
+<!--        <property name="car.price" value="9000"></property>-->
+<!--    </bean>-->
+
+</beans>

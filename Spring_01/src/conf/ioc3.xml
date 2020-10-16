@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 按照配置顺序创建 bean -->
+    <!--depends-on="car,book" 创建car,book之后再创建person -->
+    <bean id="person" class="com.guigu.bean.Person" depends-on="car,book"></bean>
+    <bean id="car" class="com.guigu.bean.Car"></bean>
+    <bean id="book" class="com.guigu.bean.Book"></bean>
+
+    <!--多实例容器启动的时候不默认创建，获取的时候被创建，每次获取都创建一个新的-->
+    <bean id="book02" class="com.guigu.bean.Book" scope="prototype"></bean>
+
+    <!-- 工厂模式
+    静态工厂：工厂本身不用创建对象，通过静态方法调用，对象 = 工厂类.工厂方法名
+    -->
+    <bean id="airPlane01" class="com.guigu.factory.AirplaneStaticFactory" factory-method="getAirplane">
+        <constructor-arg name="jzName" value="li4"/>
+    </bean>
+
+    <!--动态工厂：工厂本身需要创建对象
+    1.先创建一个 bean 的实例对象
+    factory-bean：指定使用哪个对象
+    factory-method：指定哪个方法
+    -->
+    <bean class="com.guigu.factory.AirplaneInstanceFactory" id="airplaneInstanceFactory"></bean>
+
+    <bean class="com.guigu.bean.AirPlane" id="airPlane02"
+          factory-bean="airplaneInstanceFactory" factory-method="getAirplane">
+        <constructor-arg name="jzName" value="wang5"/>
+    </bean>
+
+    <bean class="com.guigu.factory.MyFactoryBeanImpl" id="myFactoryBean"></bean>
+
+
+
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="person01" class="com.guigu.bean.Person">
+        <property name="lastName" value="zhang3"></property>
+        <property name="age" value="18"></property>
+        <property name="enail" value="zhang3@guigu.com"></property>
+        <property name="gender" value="male"></property>
+    </bean>
+
+    <bean id="person02" class="com.guigu.bean.Person">
+        <property name="lastName" value="xiaohua"></property>
+        <property name="age" value="18"></property>
+        <property name="enail" value="xiaohua@guigu.com"></property>
+        <property name="gender" value="female"></property>
+    </bean>
+
+    <bean id="person03" class="com.guigu.bean.Person">
+        <constructor-arg name="lastName" value="xiaoming"></constructor-arg>
+        <constructor-arg name="age" value="15"></constructor-arg>
+        <constructor-arg name="gender" value="male"></constructor-arg>
+        <constructor-arg name="enail" value="xiaoming@guigu.com"></constructor-arg>
+    </bean>
+
+    <!--省略 name 属性，须严格按照构造器顺序-->
+    <bean id="person04" class="com.guigu.bean.Person">
+        <constructor-arg value="xiaoming"></constructor-arg>
+        <constructor-arg value="15"></constructor-arg>
+        <constructor-arg value="male"></constructor-arg>
+        <constructor-arg value="xiaoming@guigu.com"></constructor-arg>
+    </bean>
+
+    <bean id="person06" class="com.guigu.bean.Person"
+          p:lastName="jingyu" p:age="19" p:enail="jingyu@guigu.com" p:gender="famale">
+
+    </bean>
+
+
+</beans>
