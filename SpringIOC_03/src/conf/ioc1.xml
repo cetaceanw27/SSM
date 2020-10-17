@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:content="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--Spring 有四个注解    标注了就可以快速加入ioc
+    @Controller 控制器  servlet
+    @Service    业务逻辑 推荐业务逻辑组件添加 BookService
+    @Repository  数据库曾  （ 持久化层 Dao层）组件添加这个注解
+    @Component  给不属于以上的添加这个组件
+
+    使用注解将组件快速加入容器中需要几步：
+    1）给组件添加注解
+    2）告诉Spring自动扫描加了注解的组件，依赖context名称空间
+        content：component-scan 自动扫描组件
+        base-package: 扫描包下面所有加了注解的类,至少两级
+    3)一定要导入AOP包
+        默认都是单实例，如果需要多实例 scope = prototype
+    -->
+    <content:component-scan base-package="com.guigu"></content:component-scan>
+
+
+</beans>
