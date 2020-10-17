@@ -24,6 +24,11 @@ public class Person {
 
     private Properties properties;
 
+    public Person(Car car) {
+        this.car = car;
+        System.out.println("car 的有参构造器" + car);
+    }
+
     @Override
     public String toString() {
         return "Person{" +

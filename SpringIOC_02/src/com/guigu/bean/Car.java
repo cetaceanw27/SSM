@@ -6,6 +6,8 @@ public class Car {
     private Integer price;
     private String color;
 
+
+
     public Car() {
         System.out.println("car success");
     }

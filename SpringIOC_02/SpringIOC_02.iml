@@ -6,6 +6,12 @@
         <fileset id="fileset" name="Ioc" removed="false">
           <file>file://$MODULE_DIR$/src/conf/ioc.xml</file>
         </fileset>
+        <fileset id="fileset2" name="Ioc2" removed="false">
+          <file>file://$MODULE_DIR$/src/conf/ioc2.xml</file>
+        </fileset>
+        <fileset id="fileset3" name="Ioc3" removed="false">
+          <file>file://$MODULE_DIR$/src/conf/ioc3.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
@@ -35,5 +41,24 @@
     </orderEntry>
     <orderEntry type="library" scope="TEST" name="commons-logging-1.1.3" level="project" />
     <orderEntry type="library" name="commons-logging-1.1.3" level="project" />
+    <orderEntry type="module-library">
+      <library name="c3p0-0.9.1.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/c3p0-0.9.1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-5.1.7-bin.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.14.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

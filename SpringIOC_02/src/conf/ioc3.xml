@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.guigu.bean.Car" id="car">
+        <property name="carName" value="car01"></property>
+        <property name="color" value="white"></property>
+    </bean>
+
+<!--    autowire="byName" 按照 Private Car car 属性名 {car} 获取到-->
+    <bean class="com.guigu.bean.Person" id="person" autowire="constructor"></bean>
+
+    <bean class="com.guigu.bean.Person" id="person01">
+        <property name="age" value="#{12+5}"></property>
+        <property name="lastName" value="#{car.carName}"></property>
+        <property name="car" value="#{car}"></property>
+<!--        调用静态方法 #{T(全类名).静态方法名（1，2）}-->
+        <property name="enail" value="#{T(java.util.UUID).randomUUID().toString().substring(0,5)}"></property>
+        <property name="gender" value="#{car.getCarName()}"></property>
+    </bean>
+
+
+
+</beans>
